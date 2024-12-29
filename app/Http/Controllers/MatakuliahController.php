@@ -102,6 +102,12 @@ class MatakuliahController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mk = MataKuliah::findOrFail($id);
+        $mk->delete();
+        return response()->json([
+            'status' => true,
+            'message' => 'data berhasil dihapus',
+            'data' => $mk
+        ], 200);
     }
 }
